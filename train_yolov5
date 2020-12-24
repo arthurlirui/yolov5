@@ -6,11 +6,11 @@
 #SBATCH -e yolov5.%j.err
 #SBATCH --mail-user=rui.li@kaust.edu.sa
 #SBATCH --mail-type=ALL
-#SBATCH --time=24:00:00
+#SBATCH --time=48:00:00
 #SBATCH --mem=30G
 #SBATCH --gres=gpu:v100:4
 #SBATCH --constraint=[gpu]&[local_200G]
 
 #python train_Sepnet.py
-python -m torch.distributed.launch --nproc_per_node 4 train.py --batch-size 64 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt
+python -m torch.distributed.launch --nproc_per_node 4 train.py --batch-size 64 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --img_size 1280
 
