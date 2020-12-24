@@ -1,0 +1,16 @@
+#!/bin/bash
+#SBATCH -N 1
+#SBATCH --partition=batch
+#SBATCH -J yolov5
+#SBATCH -o yolov5.%j.out
+#SBATCH -e yolov5.%j.err
+#SBATCH --mail-user=rui.li@kaust.edu.sa
+#SBATCH --mail-type=ALL
+#SBATCH --time=00:03:00
+#SBATCH --mem=12G
+#SBATCH --gres=gpu:rtx2080ti:1
+#SBATCH --constraint=[gpu]&[local_200G]
+
+#python train_Sepnet.py
+python detect.py --source data/images --weights yolov5x.pt --conf 0.25
+
