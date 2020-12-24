@@ -6,7 +6,7 @@
 #SBATCH -e yolov5.%j.err
 #SBATCH --mail-user=rui.li@kaust.edu.sa
 #SBATCH --mail-type=ALL
-#SBATCH --time=48:00:00
+#SBATCH --time=120:00:00
 #SBATCH --mem=30G
 #SBATCH --gres=gpu:v100:1
 #SBATCH --constraint=[gpu]&[local_200G]
