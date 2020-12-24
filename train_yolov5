@@ -1,9 +1,9 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH --partition=batch
-#SBATCH -J yolov5
-#SBATCH -o yolov5.%j.out
-#SBATCH -e yolov5.%j.err
+#SBATCH -J train_yolov5
+#SBATCH -o train_yolov5.%j.out
+#SBATCH -e train_yolov5.%j.err
 #SBATCH --mail-user=rui.li@kaust.edu.sa
 #SBATCH --mail-type=ALL
 #SBATCH --time=48:00:00
