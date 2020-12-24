@@ -1,17 +1,17 @@
 #!/bin/bash
 #SBATCH -N 1
 #SBATCH --partition=batch
-#SBATCH -J yolov5
-#SBATCH -o yolov5.%j.out
-#SBATCH -e yolov5.%j.err
+#SBATCH -J yolov5_evo
+#SBATCH -o yolov5_evo.%j.out
+#SBATCH -e yolov5_evo.%j.err
 #SBATCH --mail-user=rui.li@kaust.edu.sa
 #SBATCH --mail-type=ALL
 #SBATCH --time=120:00:00
-#SBATCH --mem=30G
+#SBATCH --mem=32G
 #SBATCH --gres=gpu:v100:1
 #SBATCH --constraint=[gpu]&[local_200G]
 
 #python train_Sepnet.py
 #python -m torch.distributed.launch --nproc_per_node 4 train.py --batch-size 64 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt
 
-python train.py --epochs 10 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --cache --evolve --img 1280
+python train.py --epochs 10 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --cache --evolve --img 1280 --batch-size 4
