@@ -8,9 +8,10 @@
 #SBATCH --mail-type=ALL
 #SBATCH --time=48:00:00
 #SBATCH --mem=30G
-#SBATCH --gres=gpu:v100:4
+#SBATCH --gres=gpu:v100:1
 #SBATCH --constraint=[gpu]&[local_200G]
 
 #python train_Sepnet.py
-python -m torch.distributed.launch --nproc_per_node 4 train.py --batch-size 64 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --img 1280
+#python -m torch.distributed.launch --nproc_per_node 4 train.py --batch-size 64 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --img 1280
 
+python train.py --img 1280 --batch 32 --epochs 10 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt
