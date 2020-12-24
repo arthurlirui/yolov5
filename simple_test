@@ -12,5 +12,5 @@
 #SBATCH --constraint=[gpu]&[local_200G]
 
 #python train_Sepnet.py
-python detect.py --source /home/lir0b/Code/yolov5/data/images --weights yolov5x.pt --conf 0.25
+python detect.py --source /home/lir0b/Code/yolov5/data/images --weights yolov5x.pt --conf 0.25 --save-txt
 
