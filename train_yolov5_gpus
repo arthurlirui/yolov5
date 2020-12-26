@@ -7,11 +7,11 @@
 #SBATCH --mail-user=rui.li@kaust.edu.sa
 #SBATCH --mail-type=ALL
 #SBATCH --time=48:00:00
-#SBATCH --mem=30G
-#SBATCH --gres=gpu:v100:4
+#SBATCH --mem=32G
+#SBATCH --gres=gpu:v100:8
 #SBATCH --constraint=[gpu]&[local_200G]
 
 #python train_Sepnet.py
-python -m torch.distributed.launch --nproc_per_node 4 train.py --epochs 30 --batch-size 4 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --img 1280
+python -m torch.distributed.launch --nproc_per_node 8 train.py --epochs 30 --batch-size 16 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt --img 1280
 
 #python train.py --img 1280 --batch 4 --epochs 10 --data /home/lir0b/Code/data/video/impact_det_ibex.yaml --weights yolov5x.pt
